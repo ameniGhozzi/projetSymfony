@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;color:white">Barre de navigation</font>
+            </font>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Basculer la navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ path('home.index') }}">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;color:white">Acceuil
+                            </font>
+                        </font>
+                    </a>
+                </li>
+
+        
+                {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('ingredient.index')}}">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;color:white">Mes ingrédients
+                            </font>
+                        </font>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('recipe.index')}}">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;color:white">Mes recettes
+                            </font>
+                        </font>
+                    </a>
+                </li>
+                {% endif %}
+             
+                {% if app.user %}
+                <div class="d-flex">
+                    <li class="nav-item dropdown" style="color: white;">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit; color: white;"> 
+                                {{ app.user.fullname }}
+                            </font></font></a>
+                        <div class="dropdown-menu" style="color: white;">
+                          <a class="dropdown-item"  style="color: white;" href="{{ path('user.edit' , {id: app.user.id } ) }}">
+                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;color: blue;"> 
+                            Modifier mes informations
+                            </font></font>
+                          </a>
+                          <a class="dropdown-item"  style="color: white;"href="{{ path('user.edit.password' , {id: app.user.id } ) }}">
+                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;color: blue;">
+                                 Modifier mon mot de passe 
+                                </font></font>
+                            </a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item"  style="color: white;" href=" {{ path('security.logout') }}">
+                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;color: blue;">
+                             Déconnexion 
+                            </font></font>
+                            </a>
+                          
+                        </div>
+                      </li>
+                </div>
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('security.login')}}">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;color:white"> Connexion
+                            </font>
+                        </font>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('security.registration')}}">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;color:white"> Inscription
+                            </font>
+                        </font>
+                    </a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
