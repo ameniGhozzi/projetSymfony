@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
+
 class RecipeController extends AbstractController
 {
     /**
@@ -173,6 +174,7 @@ class RecipeController extends AbstractController
          ): Response
         {
             $recipe = $repository->findOneBy(["id" => $id]);
+            //Noter la recette dooner une note entre 1 et 5 l'ensemble des note ferons un moyen
             $mark = new Mark();
             $form = $this->createForm(MarkType::class, $mark);
     
@@ -186,17 +188,13 @@ class RecipeController extends AbstractController
                     'user' => $this->getUser(),
                     'recipe' => $recipe
                 ]);
-                //dd($existingMark);
     
                 if (!$existingMark) {
                     $manager->persist($mark);
-                    //dd($mark);
                 } else {
-                   // dd( $form->getData()->getMark());
                     $existingMark->setMark(
                         $form->getData()->getMark()
                     );
-                   // dd($existingMark);
                 }
     
                 $manager->flush();
