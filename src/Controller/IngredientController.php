@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-
 
 
 class IngredientController extends AbstractController
@@ -48,7 +46,7 @@ class IngredientController extends AbstractController
      * @return Response
      */
 
-    #[Route('/ingredient/nouveau', name: 'ingredient.new', methods: ['GET', 'POST'] )]
+    #[Route('/ingredient/creation', name: 'ingredient.new', methods: ['GET', 'POST'] )]
     public function  new(Request $request, EntityManagerInterface $manager) : Response
     {
         $ingredient = new Ingredient();
