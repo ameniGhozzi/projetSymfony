@@ -66,6 +66,19 @@
                                  Modifier mon mot de passe 
                                 </font></font>
                             </a>
+                          
+
+                          {% if 'ROLE_ADMIN' in app.user.roles %}
+                          <div class="dropdown-divider"></div>
+                                <a class="dropdown-item"  style="color: white;"
+                                href="{{ path('admin') }}">
+                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;color: blue;">
+                                    Administration
+                                </font></font>
+                                </a>   
+                          {% endif %} 
+                           
+
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"  style="color: white;" href=" {{ path('security.logout') }}">
                             <font style="vertical-align: inherit;"><font style="vertical-align: inherit;color: blue;">

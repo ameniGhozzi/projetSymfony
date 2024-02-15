@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
+
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
